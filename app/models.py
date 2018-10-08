@@ -8,12 +8,19 @@ class JOB_POSTING(models.Model):
     discription = models.TextField()
     contact = models.IntegerField()
     mail = models.EmailField()
-    body = models.TextField()
     date = models.DateField()
     exp = models.IntegerField()
     location = models.CharField(max_length=20)
-    employer = models.ForeignKey(User,on_delete=models.CASCADE)
+    employer = models.ForeignKey(User,on_delete=models.CASCADE)       #used to connecting the user table
 
     
     def __str__(self):
         return self.title
+
+class job_application(models.Model):
+    user_applied = models.ForeignKey(User,on_delete=models.CASCADE)
+    job_id = models.IntegerField()
+    applied_date = models.DateField()
+
+    def __str__(self):
+        return self.title 
