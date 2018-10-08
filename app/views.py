@@ -10,3 +10,5 @@ def job_application (request):
     return render_to_response("job_application.html",{"job":job})
 def home (request):
     return render_to_response("home.html")
+def layout (request):
+    return render_to_response ("layout.html")

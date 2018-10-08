@@ -22,5 +22,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',home,name="home"),
     path('job_application',job_application,name="job_application"),
+    path('layout',layout,name="layout"),
 
 ]
