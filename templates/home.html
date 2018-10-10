@@ -1,19 +1,12 @@
+{% load static %}
 <html>
     <head>
         
         <title>home.html</title>
-
-        <style>
-        
-        .form{
-            height: 40px;
-        width: 342px;
-        font-size: 20px;
-        color: grey;
-        }
-        </style>
-
+     </head>
         <body>
+                <link rel="stylesheet" href="{% static 'style.css' %}">
+
             <div class="header">
                 <div style="text-align: center; background-color:rgb(240, 194, 70);border-bottom-left-radius:30cm; border-top-right-radius: 30cm;"
             <font face = "Comic sans MS" size =" 5"><h1>ONLINE JOB SEARCH</h1></font><br/>
@@ -22,6 +15,7 @@
             <a href="/about" style="color:black;"> <B>ABOUT</B> </a>
                 </div>
             </div>
+            
             <div class="main" style="padding-top:10px;" >
                  <div style="text-align: center;margin: 0 auto; width: 600px; border: 1px solid red;border-radius: 5px;">
                     <div>
@@ -36,17 +30,14 @@
                     </div>
                   </div>
                  <div style="text-align: center";>
-                    <h2>
-                        10th PASS<BR/>
-                        12th PASS<br/>
-                        BANK JOBS<br/>
-                        CIVIL ENG.<br/>
-                        COMPUTER JOBS<br/>
-                        DIPLOMA ELECTRICAL<br/>
-                        DRIVER JOBS<br/>
-                        FREE EMPLOYMENT<br/>
-
-                    </h2>
+                    <div>
+                        {% for i in job %}
+                            <div class="job_line">
+                                <h2>Title : <a href="jobs/{{i.id}}/">{{i.title}}</a></h2>
+                                 <span> Experience :{{i.exp}} yrs</span>
+                            </div>
+                        {% endfor %}
+                    </div>
                 </div>
 
             </div>

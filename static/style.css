@@ -1,0 +1,16 @@
+        
+.form{
+    height: 40px;
+width: 342px;
+font-size: 20px;
+color: grey;
+}
+
+.job_line{
+    background-color: rgb(211, 211, 211);
+    max-width: 800px;
+    margin:  0 auto;
+}
+html{
+    text-decoration: none;
+}
