@@ -1,0 +1,18 @@
+<html>
+    <title>Login to JobHub</title>
+    <body>
+        <div>
+            <h2>Welcome To login</h2>
+            <div>
+                <form action="/authentication/" method="POST">
+                    {% csrf_token %}
+                    <div><input type="text" name="username"></div>
+                    <div><input type="text" name="password"></div>
+                    <div><input type="submit" value="login"></div>
+                </form>
+            </div>
+        </div>
+
+
+    </body>
+</html>

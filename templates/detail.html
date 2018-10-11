@@ -1,0 +1,16 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+
+{{ JOB_POSTING.title }}
+
+{% endblock %}
+
+{% block main %}
+
+<h1>{{JOB_POSTING.title}}</h1>
+<h2> experiance: {{JOB_POSTING.exp}}</h2>
+<p>{{JOB_POSTING.discription}}</p>
+<h4> mail id :{{JOB_POSTING.mail}}</h4>
+
+{% endblock %}

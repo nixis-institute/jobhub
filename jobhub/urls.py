@@ -23,5 +23,8 @@ urlpatterns = [
     path('',home,name="home"),
     path('job_application',job_application,name="job_application"),
     path('layout',layout,name="layout"),
+    path("job/<int:pk>/",detail_job,name="detail"),
+    path("accounts/login/",Login,name="login"),
+    path("authentication/",auth,name="auth"),
 
 ]
