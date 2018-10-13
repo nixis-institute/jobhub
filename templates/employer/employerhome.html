@@ -1,0 +1,44 @@
+{% load static %}
+<html>
+    <head>
+        <title>
+            online job search
+        </title>
+        <body>
+            <link rel="stylesheet" href="{% static 'style.css' %}">
+
+        <div class="header">
+            <div style="text-align: center; background-color:rgb(240, 194, 70);border-bottom-left-radius:30cm; border-top-right-radius: 30cm;"
+        <font face = "Comic sans MS" size =" 5"><h1>ONLINE JOB SEARCH</h1></font><br/>
+        <a href="/" style="color:black;"><B> HOME </B> </a>
+        <a href="/create" style="color:black;"><B> CREATE</B></a>
+            </div>
+        </div>
+        <div class="main" style="padding-top:10px;" >
+                <div style="text-align: center;margin: 0 auto; width: 600px; border: 1px solid green;border-radius: 5px;">
+                   <div>
+                       <h1>
+                           <center>
+                               WELCOME EMPLOYER
+                           </center>
+                       </h1>
+                       <div style="padding-bottom:10px">
+                        
+                   </div>
+                   </div>
+                 </div>
+                <div style="text-align: center";>
+                   <div>
+                        {% for i in job %}
+                        <div class="job_line">
+                            <h2>Title : <a href="job/{{i.id}}/">{{i.title}}</a></h2>
+                            <span> Experience :{{i.exp}} yrs</span>
+                        </div>
+                        {% endfor %}
+                   </div>
+                   </div>
+                   </div>
+                
+         
+    </head>
+</html>

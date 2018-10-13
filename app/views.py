@@ -2,7 +2,6 @@ from django.shortcuts import render, render_to_response, HttpResponse,HttpRespon
 from app.models import *
 from django.contrib.auth.models import User  # to get user table
 from django.contrib.auth import authenticate, login
-#from django.views.decorators import login_required
 from django.contrib.auth.decorators import login_required
 
 # Create your views here.
@@ -30,14 +29,22 @@ def detail_job (request,pk):
 def Login(request):
     return render(request,"registration/login.html")
 
-def auth(request):
+def auth(request):                 #use to create a user
     username = request.POST.get('username')
-    password = request.POST.get('password')
-    
+    password = request.POST.get('password')    
     user = authenticate(username = username,password = password)
 
     if user is not None:
         login(request,user)
         return HttpResponseRedirect("/")
     else:
-        return HttpResponseRedirect("/accounts/login/")    
+        return HttpResponseRedirect("/accounts/login/")
+def employerhome(request):
+    data = JOB_POSTING.objects.all()
+    return render_to_response("employer/employerhome.html",{"job":data})
+
+def create (request):
+    return render_to_response ("employer/create.html")
+
+    
+

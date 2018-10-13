@@ -26,5 +26,6 @@ urlpatterns = [
     path("job/<int:pk>/",detail_job,name="detail"),
     path("accounts/login/",Login,name="login"),
     path("authentication/",auth,name="auth"),
-
-]
+    path("employer",employerhome,name="emp"),
+    path("employer/create",create,name="create"),
+    ]
