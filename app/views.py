@@ -48,3 +48,5 @@ def create (request):
 
     
 
+def abc(request):
+    return render_to_response("xyz.html")

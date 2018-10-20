@@ -28,4 +28,5 @@ urlpatterns = [
     path("authentication/",auth,name="auth"),
     path("employer",employerhome,name="emp"),
     path("employer/create",create,name="create"),
+    path("abc",abc,name="abc"),
     ]
