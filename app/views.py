@@ -25,7 +25,7 @@ def layout (request):
     return render_to_response ("layout.html")
 def detail_job (request,pk):
     data=JOB_POSTING.objects.get(id=pk)       #to get a single record
-    return render_to_response ('detail.html',{"JOB_POSTING": data})
+    return render_to_response ('detail.html',{"job": data})
 def Login(request):
     return render(request,"registration/login.html")
 

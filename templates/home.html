@@ -7,10 +7,22 @@ Home Page
 
 
 {% block main %}
+    <table class="table">
+        <tr>
+            <th>Job title</th>
+            <th>Required Experience</th>
+        </tr>
+        {% for i in job %}
+            <tr>
+                <td> <a href="job/{{i.id}}">{{ i.title }}</a></td>
+                <td>{{ i.exp }} yrs</td>
+            </tr>
+        {% endfor %}
+
+    </table>
     {% for i in job %}
-    <div class="job_line">
-        <h2>Title : <a href="job/{{i.id}}/">{{i.title}}</a></h2>
-        <span> Experience :{{i.exp}} yrs</span>
-    </div>
+
     {% endfor %}
 {% endblock %}
+
+

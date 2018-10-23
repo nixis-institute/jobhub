@@ -1,7 +1,8 @@
 {% load static %}
 <html>
     <head>
-        
+        <link rel="stylesheet" href="{% static 'bootstrap.min.css' %}" />
+        <link rel="stylesheet" href="{% static 'style.css' %}">
         <title>
             {% block title %}
 
@@ -10,44 +11,55 @@
      
     </head>
         <body>
-                <link rel="stylesheet" href="{% static 'style.css' %}">
-
-            <div class="header">
-                <div style="text-align: center; background-color:rgb(240, 194, 70);border-bottom-left-radius:30cm; border-top-right-radius: 30cm;"
-            <font face = "Comic sans MS" size =" 5"><h1>ONLINE JOB SEARCH</h1></font><br/>
-            <a href="/" style="color:black;"><B> HOME </B> </a>
-            <a href="/create" style="color:black;"><B> CREATE</B></a>
-            <a href="/about" style="color:black;"> <B>ABOUT</B> </a>
-                </div>
-            </div>
-            
-            <div class="main" style="padding-top:10px;" >
-                 <div style="text-align: center;margin: 0 auto; width: 600px; border: 1px solid red;border-radius: 5px;">
-                    <div>
-                        <h1>
-                            <center>
-                                FIND YOUR DREAM JOB
-                            </center>
-                        </h1>
-                        <div style="padding-bottom:10px">
-                        <input class=form type = "search" name = "search" placeholder = "search" />
-                    </div>
-                    </div>
-                  </div>
-                 <div style="text-align: center";>
-                    <div>
-                    
-                    {% block main %}    
-
-                    {% endblock %}
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12">    
+                        <div class="header">
+                            <div style="text-align: center; background-color:rgb(240, 194, 70);border-bottom-left-radius:30cm; border-top-right-radius: 30cm;"
+                        <font face = "Comic sans MS" size =" 5"><h1>ONLINE JOB SEARCH</h1></font><br/>
+                        <a href="/" style="color:black;"><B> HOME </B> </a>
+                        <a href="/create" style="color:black;"><B> CREATE</B></a>
+                        <a href="/about" style="color:black;"> <B>ABOUT</B> </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                            <div class="main" style="padding-top:10px;" >
+                                <div style="text-align: center;margin: 0 auto; width: 600px; border: 1px solid red;border-radius: 5px;">
+                                    <div>
+                                        <h1>
+                                            <center>
+                                                FIND YOUR DREAM JOB
+                                            </center>
+                                        </h1>
+                                        <div style="padding-bottom:10px">
+                                        <input class=form type = "search" name = "search" placeholder = "search" />
+                                    </div>
+                                    </div>
+                                </div>
+                                <div style="text-align: center";>
+                                    <div>
+                                            <div class="col-md-8" style="margin:0 auto;padding-top:20px;">
+                                    {% block main %}    
 
-            </div>
-            <div class="footer">
-                    <div style=" background-color:lightsalmon;">
+                                    {% endblock %}
+                                    </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                </div>
+                <div class="row">   
+                    <div class="footer">
+                            <div style=" background-color:lightsalmon;">
+                            </div>
                     </div>
-            </div>
+                </div>
+            </div>    
         </body>
     </head>
 </html>
