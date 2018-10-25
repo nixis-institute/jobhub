@@ -1,18 +1,22 @@
-<html>
-    <title>Login to JobHub</title>
-    <body>
-        <div>
-            <h2>Welcome To login</h2>
-            <div>
-                <form action="/authentication/" method="POST">
-                    {% csrf_token %}
-                    <div><input type="text" name="username"></div>
-                    <div><input type="text" name="password"></div>
-                    <div><input type="submit" value="login"></div>
+
+{% extends 'registration/layout.html' %}
+
+{% block main %}
+    <div class="login" style="padding-top: 20%">
+        <h2 style="text-align:center">Login to JobHub</h2>
+        <form action="/authentication/" method="POST" style="padding-top:2%;">
+            {% csrf_token %}
+            <div><input type="text" placeholder="Username" class="form-control" name="username"></div><br>
+            <div><input type="text" placeholder="Password" class="form-control" name="password"></div><br>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div><input type="submit" value="LOGIN" class="btn btn-primary " style="width:100%"></div>
+                </div>
+                <div class="col-sm-6">
+                        <div><input type="submit" value="Regsitration" class="btn btn-primary " style="width:100%"></div>
+                    </div>
+                </div>
                 </form>
-            </div>
-        </div>
-
-
-    </body>
-</html>
+    </div>
+    </div>
+{% endblock %}

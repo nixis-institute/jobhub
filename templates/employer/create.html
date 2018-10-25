@@ -1,12 +1,35 @@
-<html>
-    <head>
-        <title> create </title>
-        
-    </head>
+{% extends 'employer/layout.html' %}
 
-    <body> 
-        
+{% block main %}
+
+<div class="login" style="padding-top: 15%">
+    <h2 style="text-align:center">post your jobs</h2>
+
     
-    
-    </body>
-</html>
+    <form action="/accounts/registration/" method="POST" style="padding-top:2%;">
+        {% csrf_token %}
+        <body>
+            <form >
+               <input type = "text" class="form-control" name = "title" placeholder="Job Title" />
+               <br>
+                <textarea rows = "5" cols = "50" class="form-control" name = "description" placeholder=" discription"></textarea>
+               <br>
+               <input type = "text" class="form-control" name = "email" placeholder="email"/>
+               <br>
+               <input type = "password" class="form-control" name = "password" placeholder="password" />
+      
+            </form>
+         </body>
+          
+       
+
+        <div class="row">
+            <div class="col-sm-12">
+                    <div><input type="submit" value="post" class="btn btn-primary " style="width:100%"></div>
+                </div>
+            </div>
+            </form>
+</div>
+</div>
+
+{% endblock %}

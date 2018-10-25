@@ -1,0 +1,49 @@
+{% extends 'registration/layout.html' %}
+
+{% block title %}
+Registration
+{% endblock %}
+
+{% block main %}
+<div class="login" style="padding-top: 15%">
+    <h2 style="text-align:center">Register to JobHub</h2>
+
+    {% if form.errors %}
+    {% for field in form %}
+        {% for error in field.errors %}
+            <div class="alert alert-danger">
+                <strong>{{ error|escape }}</strong>
+            </div>
+        {% endfor %}
+    {% endfor %}
+    {% for error in form.non_field_errors %}
+        <div class="alert alert-danger">
+            <strong>{{ error|escape }}</strong>
+        </div>
+    {% endfor %}
+{% endif %}
+    <form action="/accounts/registration/" method="POST" style="padding-top:2%;">
+        {% csrf_token %}
+        <div>{{form.username}}</div><br>
+        <div>{{form.first_name}}</div><br>        
+        <div>{{form.last_name}}</div><br>
+        <div>{{form.email}}</div><br>
+        <div>{{form.password1}}</div><br>
+        <div>{{form.password2}}</div><br>
+        <div><select class="select form-control">
+            <option>-----</option>
+            <option>Seeker</option>
+            <option>Employer</option>
+        </select>   </div><br>
+
+
+        <div class="row">
+            <div class="col-sm-12">
+                    <div><input type="submit" value="Regsitration" class="btn btn-primary " style="width:100%"></div>
+                </div>
+            </div>
+            </form>
+</div>
+</div>
+
+{% endblock %}

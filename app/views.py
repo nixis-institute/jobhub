@@ -1,8 +1,10 @@
 from django.shortcuts import render, render_to_response, HttpResponse,HttpResponseRedirect
 from app.models import *
+from app.models import job_application as japp
 from django.contrib.auth.models import User  # to get user table
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
+from app.forms import *
 
 # Create your views here.
 def job_posting (request):
@@ -46,7 +48,38 @@ def employerhome(request):
 def create (request):
     return render_to_response ("employer/create.html")
 
-    
+def application(request,pk):
+    userid = request.user.id
+    jobid = pk
+    japp.objects.create(user_applied_id = userid,job_id_id = jobid)
+    return HttpResponse("You are successfully applied job")
+
+def Registration(request):
+    form=Registrationform(request.POST or None)
+    c = {'form':form}
+    if request.method =='POST':
+        #print(form)
+        form=Registrationform(request.POST or None)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect("/accounts/login/")
+        else:
+            return HttpResponseRedirect('/accounts/registration/')    
+    else:
+        return render(request,'registration/registration.html',c);
+             
+
 
 def abc(request):
     return render_to_response("xyz.html")
+
+
+
+
+    #icons
+    #banner
+    #rupees
+    #alignment
+    #calender
+    #screenbtn
+    
