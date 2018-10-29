@@ -12,6 +12,9 @@ def job_posting (request):
     return render_to_response("job_posting.html",{"job":job})
 
 
+def logout(request):
+    return render_to_response("registration/logout.html")
+
 
 def job_application (request):
     job = job_application.objects.all()

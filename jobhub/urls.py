@@ -31,4 +31,5 @@ urlpatterns = [
     path("employer/create",create,name="create"),
     path("abc",abc,name="abc"),
     path('applied/<int:pk>/',application,name="applied"),
+    path("accounts/logout/",logout,name="logout")
     ]
