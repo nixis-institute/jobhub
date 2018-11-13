@@ -29,7 +29,8 @@ urlpatterns = [
     path("authentication/",auth,name="auth"),
     path("employer",employerhome,name="emp"),
     path("employer/create",create,name="create"),
-    path("abc",abc,name="abc"),
     path('applied/<int:pk>/',application,name="applied"),
-    path("accounts/logout/",logout,name="logout")
+    path("accounts/logout/",logout,name="logout"),
+    path("posting/",posting,name="posting"),
+    path("searching/",searching,name="searching"),
     ]

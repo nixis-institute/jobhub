@@ -35,7 +35,11 @@
                                             </center>
                                         </h1>
                                         <div style="padding-bottom:10px">
-                                        <input class=form type = "search" name = "search" placeholder = "search" />
+                                          <form method="POST" action="/searching/">
+                                            {% csrf_token %}
+                                          <input class=form type = "search" name = "search" placeholder = "search" />
+                                        <input type="submit" value="submit" />
+                                        </form>
                                     </div>
                                     </div>
                                 </div>

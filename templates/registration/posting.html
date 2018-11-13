@@ -1,12 +1,12 @@
-{% extends 'employer/layout.html' %}
+{% extends 'registration/layout.html' %}
 
 {% block main %}
 
 <div class="login" style="">
     <h2 style="text-align:center">post your jobs</h2>    
-    <form action="/employer/create" method="POST" style="padding-top:2%;">
+    <form action="/posting/" method="POST" style="padding-top:2%;">
         {% csrf_token %}
-        <input type = "text" class="form-control" name = "title" placeholder="Job Title" />
+        <input type = "text" class="form-control" name = "title" placeholder="Title" />
         <br>
         <input type = "text" class="form-control" name = "name" placeholder="Name" />
         <br>

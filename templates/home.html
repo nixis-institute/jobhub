@@ -7,22 +7,42 @@ Home Page
 
 
 {% block main %}
+
+{% if search %}
+<p>You are find for <b>{{key}}</b></p>
+<table class="table">
+    <tr>
+        <th>Job title</th>
+        <th>Required Experience</th>
+        <th>Posted Date</th>
+    </tr>
+    {% for i in search %}
+        <tr>
+            <td> <a href="/job/{{i.id}}">{{ i.title }}</a></td>
+            <td>{{ i.exp }} yrs</td>
+            <td>{{i.date}}</td>
+        </tr>
+    {% endfor %}    
+</table>
+
+
+{% else %}
     <table class="table">
         <tr>
             <th>Job title</th>
             <th>Required Experience</th>
+            <th>Posted Date</th>
         </tr>
         {% for i in job %}
             <tr>
-                <td> <a href="job/{{i.id}}">{{ i.title }}</a></td>
+                <td> <a href="/job/{{i.id}}">{{ i.title }}</a></td>
                 <td>{{ i.exp }} yrs</td>
+                <td>{{i.date}}</td>
             </tr>
         {% endfor %}
-
     </table>
-    {% for i in job %}
+{% endif %}
 
-    {% endfor %}
 {% endblock %}
 
 

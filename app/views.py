@@ -22,8 +22,10 @@ def job_application (request):
 
 @login_required
 def home (request):
-    data = JOB_POSTING.objects.all()
-    return render_to_response('home.html',{"job":data})
+    data = JOB_POSTING.objects.all().order_by('-date')
+    return render(request,'home.html',{"job":data})
+def post (request):
+    return render_to_response('post.html',{"job":data})
 
 
 def layout (request):
@@ -49,7 +51,19 @@ def employerhome(request):
     return render_to_response("employer/employerhome.html",{"job":data})
 
 def create (request):
-    return render_to_response ("employer/create.html")
+    if request.method=="POST":
+        title = request.POST.get("title")
+        name = request.POST.get("name")
+        des = request.POST.get("description")
+        mail = request.POST.get('email')
+        contact = request.POST.get("contact")
+        exp = request.POST.get('exp')
+        loc = request.POST.get('location')
+        JOB_POSTING.objects.create(title=title,name=name,discription=des,mail=mail,contact=contact,exp=exp,location=loc,employer_id=2)
+        return HttpResponseRedirect("/employer")
+        
+    else:    
+        return render(request,"employer/create.html")
 
 def application(request,pk):
     userid = request.user.id
@@ -71,18 +85,28 @@ def Registration(request):
     else:
         return render(request,'registration/registration.html',c);
              
-
-
-def abc(request):
-    return render_to_response("xyz.html")
-
-
-
-
-    #icons
-    #banner
-    #rupees
-    #alignment
-    #calender
-    #screenbtn
+def searching(request):
+    search=request.POST.get("search")
+    data = JOB_POSTING.objects.filter(title__contains=search)
+    return render(request,"home.html",{"search":data,"key":search})
     
+    #return HttpResponse(data)
+
+
+def posting (request):
+    if request.method=="POST":
+        title = request.POST.get("title")
+        name = request.POST.get("name")
+        des = request.POST.get("description")
+        mail = request.POST.get('email')
+        contact = request.POST.get("contact")
+        exp = request.POST.get('exp')
+        loc = request.POST.get('location')
+
+        JOB_POSTING.objects.create(title=title,name=name,discription=des,mail=mail,contact=contact,exp=exp,location=loc,employer_id=1)
+        return HttpResponseRedirect("/")
+        
+    else:    
+        return render(request,"registration/posting.html")
+
+
