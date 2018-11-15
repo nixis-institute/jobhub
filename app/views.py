@@ -59,7 +59,7 @@ def create (request):
         contact = request.POST.get("contact")
         exp = request.POST.get('exp')
         loc = request.POST.get('location')
-        JOB_POSTING.objects.create(title=title,name=name,discription=des,mail=mail,contact=contact,exp=exp,location=loc,employer_id=2)
+        JOB_POSTING.objects.create(title=title,name=name,discription=des,mail=mail,contact=contact,exp=exp,location=loc,employer_id=request.user.id)
         return HttpResponseRedirect("/employer")
         
     else:    
@@ -69,7 +69,7 @@ def application(request,pk):
     userid = request.user.id
     jobid = pk
     japp.objects.create(user_applied_id = userid,job_id_id = jobid)
-    return HttpResponse("You are successfully applied job")
+    return HttpResponse("<h2 style='text-align:center'>You are successfully applied job click <a href='/'>here</a> to home page</h2>")
 
 def Registration(request):
     form=Registrationform(request.POST or None)
@@ -91,7 +91,11 @@ def searching(request):
     return render(request,"home.html",{"search":data,"key":search})
     
     #return HttpResponse(data)
-
+@login_required
+def profile(request):
+    #data = User.objects.get(request)
+    data = request.user
+    return render_to_response("registration/profile.html",{'user':data})
 
 def posting (request):
     if request.method=="POST":

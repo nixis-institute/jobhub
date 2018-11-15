@@ -1,0 +1,60 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+Profile
+{% endblock %}
+
+
+{% block main %}    
+
+<h2>Welcome {{user.first_name}} to your profile</h2>
+<table class="table">
+    <tr>
+        <td>First Name</td>
+        <td>{{user.first_name}}</td>
+    </tr>
+
+    <tr>
+        <td>Last Name</td>
+        <td>{{user.last_name}}</td>
+    </tr>
+    <tr>
+        <td>Email</td>
+        <td>{{user.email}}</td>
+    </tr>
+
+    <tr>
+        <td>Group</td>
+        <td>{{user.groups.values_list.0.1}}</td>
+    </tr>
+    <tr>
+            {% if user.groups.values_list.0.1 == 'Employer' %}
+                <td>Created Jobs</td>
+            {% elif  user.groups.values_list.0.1 == 'Seeker' %}
+                <td>Job Applied</td>
+            {% else %}
+                <td></td>    
+            {% endif %}
+        <td>
+            {% if user.groups.values_list.0.1 == 'Employer' %}
+                {% for i in user.job_posting_set.all %}
+                    <div><a href="/job/{{i.id}}">{{i.title}}</a></div>
+                {% endfor %}
+            {% else %}
+                {% for i in user.job_application_set.all %}
+                    <div><a href="/job/{{i.id}}">{{i.job_id.title}}</a></div>
+                {% endfor %}
+            {% endif %}
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="2">
+            <a href="/accounts/logout">
+                <input type="button" class="btn btn-primary" value="Logout"/>
+            </a>
+        </td>
+    </tr>
+
+    </table>
+{% endblock %}

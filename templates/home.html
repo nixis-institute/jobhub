@@ -7,6 +7,24 @@ Home Page
 
 
 {% block main %}
+<div class="main" style="padding-top:10px;" >
+        <div style="text-align: center;margin: 0 auto; width: 600px; border: 1px solid red;border-radius: 5px;">
+            <div>
+                <h1>
+                    <center>
+                        FIND YOUR DREAM JOB
+                    </center>
+                </h1>
+                <div style="padding-bottom:10px">
+                  <form method="POST" action="/searching/">
+                    {% csrf_token %}
+                  <input class=form type = "search" name = "search" placeholder = "search" />
+                <input type="submit" value="submit" />
+                </form>
+            </div>
+            </div>
+        </div>
+
 
 {% if search %}
 <p>You are find for <b>{{key}}</b></p>
@@ -27,7 +45,7 @@ Home Page
 
 
 {% else %}
-    <table class="table">
+    <table class="table"  style="margin-top:10px;">
         <tr>
             <th>Job title</th>
             <th>Required Experience</th>

@@ -31,6 +31,7 @@ urlpatterns = [
     path("employer/create",create,name="create"),
     path('applied/<int:pk>/',application,name="applied"),
     path("accounts/logout/",logout,name="logout"),
+    path("accounts/profile/",profile,name="profile"),
     path("posting/",posting,name="posting"),
     path("searching/",searching,name="searching"),
     ]
