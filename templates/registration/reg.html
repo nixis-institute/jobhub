@@ -1,0 +1,36 @@
+{% extends 'registration/layout.html' %}
+
+{% block title %}
+Reg
+{% endblock %}
+
+{% block main %}
+<div class="login" style="">
+    <h2 style="text-align:center">WELCOME TO REGISTRATION</h2>    
+    <form action="/accounts/registration/" method="POST" style="padding-top:2%;">
+        {% csrf_token %}
+        <input type = "text" class="form-control" name = "user_name" placeholder="user_name" />
+        <br>
+        <input type = "text" class="form-control" name = "first_name" placeholder="first_Name" />
+        <br>
+        <input type = "text" class="form-control" name = "last_name" placeholder="last_Name" />
+        <br>
+        <input type = "text" class="form-control" name = "email" placeholder="Email"/>
+        <br>
+        <input type = "password" class="form-control" name = "password_1" placeholder="password_1" />
+        <br>
+        <input type = "password" class="form-control" name = "password_2" placeholder="password_2" />      
+        <br>
+
+        
+        <select class="form-control" name="user_type">
+            <option>-----</option>
+            <option value="Seeker">Seeker</option>
+            <option value="Employer">Employer</option>
+        </select><br>
+        <input type="submit" value="registered" class="btn btn-primary " style="width:100%">
+    </form>
+</div>
+</div>
+
+{% endblock %}

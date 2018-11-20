@@ -26,7 +26,16 @@ def home (request):
     return render(request,'home.html',{"job":data})
 def post (request):
     return render_to_response('post.html',{"job":data})
+def about(request):
+    if request.method=="POST":
+        title= request.post.get("title")
+        name= request.post.get("name")
+        address= request.post.get("address")
+        phone_no= request.post.get("phone_no")
+        return render_to_response("/")
 
+
+    return render_to_response('about.html')
 
 def layout (request):
     return render_to_response ("layout.html")
@@ -84,6 +93,8 @@ def Registration(request):
             return HttpResponseRedirect('/accounts/registration/')    
     else:
         return render(request,'registration/registration.html',c);
+def suc_reg(request):
+    return render_to_response('/registration/suc_reg')
              
 def searching(request):
     search=request.POST.get("search")
@@ -96,6 +107,25 @@ def profile(request):
     #data = User.objects.get(request)
     data = request.user
     return render_to_response("registration/profile.html",{'user':data})
+@login_required
+def reg(request):
+    if request.method=="POST":
+        user_name = request.POST.get("user_name")
+        first_name = request.POST.get("first_name")
+        last_name = request.POST.get("last_name")
+        email = request.POST.get("email")
+        password_1 = request.POST.get("password_1")
+        password_2 = request.POST.get("password_2")
+        user_type = request.POST.get("user_type")
+        return render_to_response ("registration/suc_reg.html")
+        #JOB_POSTING.objects.create(user_name=user_name,first_name=first_name,last_name=last_name,email=email,password_1=password_1,password_2=password_2,user_type=user_type)
+        #return render_to_response ("registration/profile.html",{'user':data})
+        
+    else:    
+        return render(request,"registration/reg.html")
+
+
+ 
 
 def posting (request):
     if request.method=="POST":
